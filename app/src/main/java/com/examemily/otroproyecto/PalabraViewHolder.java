@@ -1,17 +1,15 @@
 package com.examemily.otroproyecto;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-class PalabraViewHolder extends RecyclerView.ViewHolder{
+public class PalabraViewHolder extends RecyclerView.ViewHolder {
     private final TextView wordItemView;
 
-    public PalabraViewHolder(View itemView) {
+    private PalabraViewHolder(View itemView) {
         super(itemView);
         wordItemView = itemView.findViewById(R.id.textView);
     }

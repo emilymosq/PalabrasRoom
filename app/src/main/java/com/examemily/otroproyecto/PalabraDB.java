@@ -1,5 +1,6 @@
 package com.examemily.otroproyecto;
 
+
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -12,19 +13,18 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Palabra.class}, version = 1, exportSchema = false)
-public abstract class PalabraDB extends RoomDatabase{
-    public abstract PalabraDao palabraDAO();
+public abstract class PalabraDB extends RoomDatabase {
+    public abstract PalabraDao palabraDao();
     private static volatile PalabraDB INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-
-    static PalabraDB getDatabase(final Context context){
-        if(INSTANCE == null){
-            synchronized (PalabraDB.class){
-                if(INSTANCE == null){
+    static PalabraDB getDatabase(final Context context) {
+        if(INSTANCE == null) {
+            synchronized (PalabraDB.class) {
+                if(INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            PalabraDB.class, "palabras_db")
+                                    PalabraDB.class, "palabras_db")
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
@@ -43,12 +43,13 @@ public abstract class PalabraDB extends RoomDatabase{
             databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
-                PalabraDao dao = INSTANCE.palabraDAO();
+                PalabraDao dao = INSTANCE.palabraDao();
                 dao.deleteAll();
 
-                Palabra palabra = new Palabra("Hola");
+                Palabra palabra = new Palabra("Bienvenido");
                 dao.insert(palabra);
             });
         }
     };
+
 }

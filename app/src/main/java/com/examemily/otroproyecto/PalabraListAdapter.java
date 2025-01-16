@@ -2,11 +2,12 @@ package com.examemily.otroproyecto;
 
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
 
 public class PalabraListAdapter extends ListAdapter<Palabra, PalabraViewHolder> {
+
     public PalabraListAdapter(@NonNull DiffUtil.ItemCallback<Palabra> diffCallback) {
         super(diffCallback);
     }
@@ -34,4 +35,6 @@ public class PalabraListAdapter extends ListAdapter<Palabra, PalabraViewHolder> 
             return oldItem.getPalabra().equals(newItem.getPalabra());
         }
     }
+
+
 }

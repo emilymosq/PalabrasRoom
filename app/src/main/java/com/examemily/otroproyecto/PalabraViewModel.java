@@ -1,5 +1,7 @@
 package com.examemily.otroproyecto;
+
 import android.app.Application;
+
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
@@ -22,6 +24,6 @@ public class PalabraViewModel extends AndroidViewModel {
     public void insert(Palabra palabra) {
         mPalabraRepository.insert(palabra);
     }
+
+    public void delete (Palabra palabra) { mPalabraRepository.delete(palabra); }
 }
-
-

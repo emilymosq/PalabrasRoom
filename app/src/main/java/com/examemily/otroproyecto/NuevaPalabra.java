@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class NuevaPalabra extends AppCompatActivity {
 
     public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
+    public static final String EXTRA_DELETE = "com.example.android.wordlistsql.DELETE";
 
     private EditText mEditWordView;
 
@@ -36,5 +37,6 @@ public class NuevaPalabra extends AppCompatActivity {
             }
             finish();
         });
+
     }
 }

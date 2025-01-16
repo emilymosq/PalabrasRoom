@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 public class PalabraRepository {
-    private PalabraDao mpalabraDAO;
+    private PalabraDao mPalabraDao;
     private LiveData<List<Palabra>> mPalabras;
 
     PalabraRepository(Application application) {
         PalabraDB db = PalabraDB.getDatabase(application);
-        mpalabraDAO = db.palabraDAO();
-        mPalabras = mpalabraDAO.getPalabrasOrdenadas();
+        mPalabraDao = db.palabraDao();
+        mPalabras = mPalabraDao.getPalabrasOrdenadas();
     }
 
     LiveData<List<Palabra>> getAllPalabras(){
@@ -19,7 +19,13 @@ public class PalabraRepository {
 
     void insert(Palabra palabra) {
         PalabraDB.databaseWriteExecutor.execute(() -> {
-            mpalabraDAO.insert(palabra);
+            mPalabraDao.insert(palabra);
+        });
+    }
+
+    void delete(Palabra palabra) {
+        PalabraDB.databaseWriteExecutor.execute(() -> {
+            mPalabraDao.delete(palabra);
         });
     }
 }
